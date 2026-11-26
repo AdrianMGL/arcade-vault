@@ -6,18 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Arcade Vault is a platform for playing games online and competing for the highest number of points. The README is written in Spanish. The codebase is at an early stage: it is still the stock `create-next-app` scaffold (`app/page.tsx` is the default template, and `app/layout.tsx` still has the default metadata).
 
-## Commands
+## Skills
 
-Package manager is npm (`package-lock.json` is present).
-
-- `npm install` — install dependencies
-- `npm run dev` — start the Next.js dev server (`next dev`)
-- `npm run build` — production build (`next build`)
-- `npm run start` — serve the production build (`next start`)
-- `npm run lint` — run ESLint (`eslint`, flat config in `eslint.config.mjs`)
-- Type check: no script defined; use `npx tsc --noEmit` (`tsconfig.json` has `noEmit: true`, `strict: true`)
-
-There is no test runner configured and no test files exist. Do not assume a test command; if tests are added, document the command here.
+Usa siempre /frontend-design para diseñar la interfaz de usuario.
 
 ## Next.js version warning
 
