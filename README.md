@@ -15,4 +15,15 @@ https://github.com/Klerith/fernando-skills
 npx skills@latest add Klerith/fernando-skills
 ```
 
-## test config arcade-vault
+## Commands
+
+Package manager is npm (`package-lock.json` is present).
+
+- `npm install` — install dependencies
+- `npm run dev` — start the Next.js dev server (`next dev`)
+- `npm run build` — production build (`next build`)
+- `npm run start` — serve the production build (`next start`)
+- `npm run lint` — run ESLint (`eslint`, flat config in `eslint.config.mjs`)
+- Type check: no script defined; use `npx tsc --noEmit` (`tsconfig.json` has `noEmit: true`, `strict: true`)
+
+There is no test runner configured and no test files exist. Do not assume a test command; if tests are added, document the command here.
