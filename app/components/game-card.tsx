@@ -1,0 +1,68 @@
+"use client";
+
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
+import type { Game, GameAccent } from "@/app/data/mock-data";
+
+function buttonClass(accent: GameAccent): string {
+  if (accent === "magenta") return "btn magenta";
+  if (accent === "yellow") return "btn yellow";
+  return "btn";
+}
+
+export function GameCard({ game }: { game: Game }) {
+  const router = useRouter();
+  const tiltRef = useRef<HTMLDivElement>(null);
+  const href = `/juegos/${game.id}`;
+
+  // Efecto de inclinación con el mouse. En táctil no se aplica; el clic funciona igual.
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = tiltRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `translateY(-6px) rotateX(${-py * 6}deg) rotateY(${px * 8}deg)`;
+  };
+
+  const onLeave = () => {
+    const el = tiltRef.current;
+    if (!el) return;
+    el.style.transform = "";
+  };
+
+  return (
+    <div
+      ref={tiltRef}
+      className="card"
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      onClick={() => router.push(href)}
+    >
+      <div className="cover">
+        <div className={"cover-bg " + game.cover}></div>
+        <div className="label">{game.category}</div>
+      </div>
+      <div className="meta">
+        <div className="title">{game.title}</div>
+        <div className="desc">{game.short}</div>
+        <div className="row">
+          <div className="score-badge">
+            <span>MEJOR PUNTUACIÓN</span>
+            <b>{game.bestScore.toLocaleString("es-ES")}</b>
+          </div>
+          <button
+            type="button"
+            className={buttonClass(game.accent)}
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push(href);
+            }}
+          >
+            JUGAR
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

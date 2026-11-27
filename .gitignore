@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# playwright screenshots and MCP output
+/.playwright-screeenshots/
+!/.playwright-screeenshots/.gitkeep
+/.playwright-mcp/
+!/.playwright-mcp/.gitkeep
+
 # debug
 npm-debug.log*
 yarn-debug.log*
