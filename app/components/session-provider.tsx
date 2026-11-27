@@ -16,6 +16,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
+    // Sincroniza con localStorage (sistema externo) una sola vez, tras el montaje.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSession(readSession());
   }, []);
 
