@@ -36,11 +36,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${pressStart.variable} ${courierPrime.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SessionProvider>
-          <Nav />
-          <main className="av-main">{children}</main>
-          <Footer />
-        </SessionProvider>
+        <div className="av-bg" aria-hidden="true" />
+        <div className="av-noise" aria-hidden="true" />
+        <div id="root">
+          <SessionProvider>
+            <Nav />
+            <main className="av-main">{children}</main>
+            <Footer />
+          </SessionProvider>
+        </div>
       </body>
     </html>
   );
