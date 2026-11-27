@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Press_Start_2P, Courier_Prime, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "@/app/components/session-provider";
+import { Nav } from "@/app/components/nav";
+import { Footer } from "@/app/components/footer";
 
 const pressStart = Press_Start_2P({
   variable: "--font-press-start",
@@ -34,7 +36,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${pressStart.variable} ${courierPrime.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <Nav />
+          <main className="av-main">{children}</main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );
